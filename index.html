@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding for a Change</title>
+  <meta name="description" content="Providing financial assistance to individuals affected by the PSEN1 gene mutation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --sage: #7A9E7E;
+      --sage-light: #E8F0E9;
+      --sage-dark: #5B7D5F;
+      --cream: #FDFAF5;
+      --warm-white: #FFFFFF;
+      --charcoal: #2C2C2C;
+      --text: #3A3A3A;
+      --text-light: #6B6B6B;
+      --border: #E0DDD7;
+      --accent: #C4956A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(253, 250, 245, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sage-dark); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--charcoal);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+      background: linear-gradient(180deg, var(--sage-light) 0%, var(--cream) 100%);
+    }
+
+    .hero-content { max-width: 640px; }
+
+    .hero h1 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--sage);
+      color: white;
+      padding: 0.85rem 2.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--sage-dark); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--sage-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Source Serif 4', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .section-text {
+      color: var(--text);
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--warm-white); border-top: 1px solid var(--border); }
+
+    /* HOW TO HELP */
+    .help { background: var(--cream); border-top: 1px solid var(--border); }
+
+    .help-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .help-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+    }
+
+    .help-card h3 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .help-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* REQUEST FORM */
+    .request {
+      background: var(--sage-light);
+      border-top: 1px solid var(--border);
+    }
+
+    .form-note {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.92rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .form-note strong { color: var(--text); }
+
+    form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    .optional {
+      font-weight: 400;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--warm-white);
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--sage);
+    }
+
+    textarea { resize: vertical; min-height: 120px; }
+
+    .submit-btn {
+      background: var(--sage);
+      color: white;
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+
+    .submit-btn:hover { background: var(--sage-dark); }
+
+    /* CONTACT */
+    .contact {
+      background: var(--charcoal);
+      color: white;
+      text-align: center;
+    }
+
+    .contact .section-label { color: var(--sage); }
+    .contact .section-title { color: white; }
+
+    .contact .section-text {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .contact-email {
+      display: inline-block;
+      color: var(--sage);
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .contact-email:hover { border-bottom-color: var(--sage); }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer p {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(253, 250, 245, 0.98);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border);
+        gap: 1rem;
+      }
+
+      .hero h1 { font-size: 2.2rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .help-cards { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.5rem; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Coding for a Change</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#help">How to Help</a></li>
+      <li><a href="#request">Request Help</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Help for families affected by PSEN1</h1>
+      <p>Coding for a Change provides financial assistance for medical treatment, medication, and quality-of-life experiences for individuals and families affected by the PSEN1 gene mutation.</p>
+      <a href="#request" class="hero-cta">Request Assistance</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container fade-in">
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">A fund built on compassion</h2>
+      <p class="section-text">Coding for a Change is a 501(c)(3) nonprofit based in Utah. We exist for one reason: to help people carrying the PSEN1 mutation live fuller lives.</p>
+      <p class="section-text">The PSEN1 gene mutation is linked to early-onset Alzheimer's disease. Families affected by this condition often face enormous financial and emotional burdens. We believe no one should have to face that alone.</p>
+      <p class="section-text">Our fund helps cover the cost of medicine, medical care, and meaningful experiences for patients and their families. Both donors and recipients may remain fully anonymous.</p>
+    </div>
+  </section>
+
+  <!-- HOW TO HELP -->
+  <section class="help" id="help">
+    <div class="container fade-in">
+      <p class="section-label">How to Help</p>
+      <h2 class="section-title">Every gift makes a difference</h2>
+      <p class="section-text">There are several ways to support our mission. All donations are tax-deductible, and you may give anonymously.</p>
+      <div class="help-cards">
+        <div class="help-card">
+          <h3>Donate</h3>
+          <p>Financial contributions go directly toward helping individuals and families affected by PSEN1. Contact us to arrange a donation.</p>
+        </div>
+        <div class="help-card">
+          <h3>Spread the Word</h3>
+          <p>Share our mission with others. The more people who know about PSEN1, the more families we can reach and support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUEST HELP -->
+  <section class="request" id="request">
+    <div class="container fade-in">
+      <p class="section-label">Request Assistance</p>
+      <h2 class="section-title">We are here to help</h2>
+      <div class="form-note">
+        <strong>Your privacy matters.</strong> This form is anonymous. You are not required to share your name or any identifying information. If you would like us to follow up with you, you may provide a way to reach you, but this is entirely optional.
+      </div>
+      <form action="https://formsubmit.co/YOUR-EMAIL-HERE" method="POST">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="New Assistance Request">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none">
+
+        <div>
+          <label for="type">What kind of help do you need?</label>
+          <select id="type" name="type" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="Medical treatment">Medical treatment</option>
+            <option value="Medication">Medication</option>
+            <option value="Quality-of-life experience">Quality-of-life experience</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="description">Tell us about your situation</label>
+          <textarea id="description" name="description" placeholder="Share as much or as little as you are comfortable with." required></textarea>
+        </div>
+
+        <div>
+          <label for="amount">Approximate amount needed <span class="optional">(optional)</span></label>
+          <input type="text" id="amount" name="amount" placeholder="e.g. $500">
+        </div>
+
+        <div>
+          <label for="contact-method">How can we reach you?</label>
+          <input type="text" id="contact-method" name="contact_method" placeholder="Email or phone number" required>
+          <p style="font-size: 0.82rem; color: var(--text-light); margin-top: 0.4rem; line-height: 1.5;">We need a way to follow up with you. If you prefer to stay anonymous, you can create a free encrypted email at <a href="https://proton.me" target="_blank" rel="noopener" style="color: var(--sage-dark);">proton.me</a> and use that instead.</p>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Request</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container fade-in">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Get in touch</h2>
+      <p class="section-text">Have questions about our organization or want to learn more? Reach out to us.</p>
+      <a href="mailto:contact@codingforachange.org" class="contact-email">contact@codingforachange.org</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Coding for a Change is a 501(c)(3) nonprofit organization. All donations are tax-deductible.</p>
+  </footer>
+
+  <!-- SCROLL ANIMATION -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
