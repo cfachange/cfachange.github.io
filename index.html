@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coding for a Change</title>
-  <meta name="description" content="Providing financial assistance to individuals affected by the PSEN1 gene mutation.">
+  <meta name="description" content="Providing financial assistance to individuals affected by Alzheimer's disease.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -291,6 +291,50 @@
 
     .contact-email:hover { border-bottom-color: var(--sage); }
 
+    /* DOCUMENTS */
+    .documents {
+      background: var(--charcoal);
+      text-align: center;
+      padding: 0 2rem 3rem;
+    }
+
+    .documents .section-label { color: var(--sage); }
+    .documents .section-title { color: white; }
+
+    .doc-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .doc-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      padding: 1.25rem 1rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .doc-box:hover { background: rgba(255, 255, 255, 0.14); }
+
+    .doc-box p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .doc-box span {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.78rem;
+      display: block;
+      margin-top: 0.3rem;
+    }
+
     /* FOOTER */
     footer {
       background: var(--charcoal);
@@ -325,6 +369,7 @@
       .hero h1 { font-size: 2.2rem; }
       .hero { padding: 7rem 1.5rem 4rem; }
       .help-cards { grid-template-columns: 1fr; }
+      .doc-boxes { grid-template-columns: 1fr; }
       section { padding: 3.5rem 1.5rem; }
     }
 
@@ -360,8 +405,8 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Help for families affected by PSEN1</h1>
-      <p>Coding for a Change provides financial assistance for medical treatment, medication, and quality-of-life experiences for individuals and families affected by the PSEN1 gene mutation.</p>
+      <h1>Help for families affected by Alzheimer's</h1>
+      <p>Coding for a Change provides financial assistance for medical treatment, medication, and quality-of-life experiences for individuals and families affected by Alzheimer's disease.</p>
       <a href="#request" class="hero-cta">Request Assistance</a>
     </div>
   </section>
@@ -371,8 +416,8 @@
     <div class="container fade-in">
       <p class="section-label">About Us</p>
       <h2 class="section-title">A fund built on compassion</h2>
-      <p class="section-text">Coding for a Change is a 501(c)(3) nonprofit based in Utah. We exist for one reason: to help people carrying the PSEN1 mutation live fuller lives.</p>
-      <p class="section-text">The PSEN1 gene mutation is linked to early-onset Alzheimer's disease. Families affected by this condition often face enormous financial and emotional burdens. We believe no one should have to face that alone.</p>
+      <p class="section-text">Coding for a Change is a 501(c)(3) nonprofit based in Utah. We exist for one reason: to help people affected by Alzheimer's disease live fuller lives.</p>
+      <p class="section-text">Alzheimer's disease can strike decades before most people expect it. Families affected by this condition often face enormous financial and emotional burdens. We believe no one should have to face that alone.</p>
       <p class="section-text">Our fund helps cover the cost of medicine, medical care, and meaningful experiences for patients and their families. Both donors and recipients may remain fully anonymous.</p>
     </div>
   </section>
@@ -386,11 +431,11 @@
       <div class="help-cards">
         <div class="help-card">
           <h3>Donate</h3>
-          <p>Financial contributions go directly toward helping individuals and families affected by PSEN1. Contact us to arrange a donation.</p>
+          <p>Financial contributions go directly toward helping individuals and families affected by Alzheimer's. Contact us to arrange a donation.</p>
         </div>
         <div class="help-card">
           <h3>Spread the Word</h3>
-          <p>Share our mission with others. The more people who know about PSEN1, the more families we can reach and support.</p>
+          <p>Share our mission with others. The more people who know about Alzheimer's, the more families we can reach and support.</p>
         </div>
       </div>
     </div>
@@ -402,9 +447,9 @@
       <p class="section-label">Request Assistance</p>
       <h2 class="section-title">We are here to help</h2>
       <div class="form-note">
-        <strong>Your privacy matters.</strong> This form is anonymous. You are not required to share your name or any identifying information. If you would like us to follow up with you, you may provide a way to reach you, but this is entirely optional.
+        <strong>Your privacy matters.</strong> You are not required to share your name. We do need a way to reach you so we can follow up on your request. If you prefer to stay anonymous, you can create a free encrypted email at <a href="https://proton.me" target="_blank" rel="noopener" style="color: var(--sage-dark);">proton.me</a> and use that instead.
       </div>
-      <form action="https://formsubmit.co/contact@codingforachange.org" method="POST">
+      <form action="https://formsubmit.co/codingforachange@gusfam.com" method="POST">
         <!-- FormSubmit config -->
         <input type="hidden" name="_subject" value="New Assistance Request">
         <input type="hidden" name="_captcha" value="false">
@@ -450,6 +495,27 @@
       <h2 class="section-title">Get in touch</h2>
       <p class="section-text">Have questions about our organization or want to learn more? Reach out to us.</p>
       <a href="mailto:contact@codingforachange.org" class="contact-email">contact@codingforachange.org</a>
+    </div>
+  </section>
+
+  <!-- DOCUMENTS -->
+  <section class="documents">
+    <div class="container fade-in">
+      <p class="section-label">Organization Documents</p>
+      <div class="doc-boxes">
+        <a href="docs/CFC_Constitution.pdf" target="_blank" class="doc-box">
+          <p>Constitution</p>
+          <span>PDF</span>
+        </a>
+        <a href="docs/CFC_Bylaws.pdf" target="_blank" class="doc-box">
+          <p>Bylaws</p>
+          <span>PDF</span>
+        </a>
+        <a href="docs/CFC_Standing_Rules.pdf" target="_blank" class="doc-box">
+          <p>Standing Rules</p>
+          <span>PDF</span>
+        </a>
+      </div>
     </div>
   </section>
 
